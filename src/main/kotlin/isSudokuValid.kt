@@ -21,12 +21,9 @@ fun isSudokuValid(board: Array<Array<Char>>): Boolean {
     for (row in 0 until size) {
         for (col in 0 until size) {
             val current = board[row][col]
-            if (current != '-' && !current.isDigit() && (current < 'A' || current > 'G')) {
-                return false
-            }
 
-            // Ensure the number is within the valid range (1 to board size)
-            if (current.isDigit() && (current.toString().toInt() < 1 || current.toString().toInt() > size)) {
+            // Check Valid Letter
+            if (current != '-' && !(current.isDigit() && current.toString().toInt() in 1..size) && current !in 'A'..'G') {
                 return false
             }
         }
